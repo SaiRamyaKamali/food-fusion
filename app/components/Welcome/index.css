@@ -73,4 +73,11 @@
     background-color: #ffa6a6;
     color: #bc1717;
     text-shadow: 1px 1px #333;
+    cursor: pointer;
+  }
+
+
+.getStarted-btn:hover {
+    background-color: #ffcccc;
+    color: #b01c1c;
   }
