@@ -1,0 +1,76 @@
+.container {
+    background-image: url('../public/foodBg.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+  }
+  
+  .title {
+    margin-top: 40px;
+    font-size: 5rem;
+    font-family: cursive;
+    color: #fff;
+    text-shadow: 2px 2px #333;
+    animation: title-color 4s infinite;
+  }
+  
+  @keyframes title-color {
+    0% {
+      color: #f27d7d;
+    }
+    50% {
+      color: #e83929;
+    }
+    100% {
+      color: #f27d7d;
+    }
+  }
+  
+  .sub-heading{
+    color: #f27d7d;
+    text-shadow: 1px 1px #333;
+    font-family: cursive;
+    animation: subheading-color 4s infinite;
+  }
+
+
+  @keyframes subheading-color {
+    0% {
+      color:  #e83929;
+    }
+    50% {
+      color:  #f27d7d;
+    }
+    100% {
+      color: #e83929;
+    }
+  }
+
+
+
+  .details{
+    color: #bc1717;
+    width:50%;
+    font-size: 18px;
+    text-align: center;
+    text-shadow: 1px 1px #333;
+    margin-top: 20px;
+  }
+
+
+  .getStarted-btn{
+    margin-top: 20px;
+    width: 250px;
+    height: 80px;
+    font-size: 30px;
+    border-radius: 50px;
+    border: none;
+    background-color: #ffa6a6;
+    color: #bc1717;
+    text-shadow: 1px 1px #333;
+  }
