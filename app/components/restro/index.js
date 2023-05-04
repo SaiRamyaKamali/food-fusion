@@ -6,24 +6,26 @@ const Selection = ({ username, preferences}) => {
   const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${preferences.cuisine}&key=${apiKey}`;
 
   useEffect(() => {
-    async function getNearbyRestaurants() {
+    async function getNearbyRestaurants(preferences) {
+      console.log(preferences)
       try {
         const response = await fetch(`/api/restro`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ preferences }),
+          body: JSON.stringify(preferences),
         });
         const data = await response.json();
-        setRestaurants(data);
+        console.log(data)
+        setRestaurants(data.results);
       } catch (error) {
         console.error(error);
       }
     }
 
     if (preferences.location && preferences.cuisine && preferences.price) {
-      getNearbyRestaurants();
+      getNearbyRestaurants(preferences);
     }
   }, [preferences]);
 
