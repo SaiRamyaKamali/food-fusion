@@ -6,5 +6,6 @@ export async function POST(request) {
   const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${preferences.cuisine}&key=${apiKey}`;
 
   const response = await fetch(apiUrl);
-  return new Response({response.data})
+  const data = await response.json();
+  return new Response(JSON.stringify(data))
 }
