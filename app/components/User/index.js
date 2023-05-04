@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Selection from "../restro";
 
 const ShareLink = () => {
   const [usernames, setUsernames] = useState({});
   const [preferences, setPreferences] = useState({});
+  const [renderRestro, setRenderRestro] = useState(false);
+  const [userID,setUserID] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,6 +20,8 @@ const ShareLink = () => {
       ...prevPreferences,
       [userId]: {},
     }));
+    // console.log('JJ'+usernames);
+    // console.log('KK'+preferences);
     event.target.reset();
   };
 
@@ -31,12 +36,19 @@ const ShareLink = () => {
 
   const handlePreferenceSubmit = (event, userId) => {
     event.preventDefault();
+    console.log('JJ'+ usernames[userId]);
+    console.log(preferences[userId]);
     console.log(`Preferences submitted for user ${usernames[userId]}:`);
     console.log(preferences[userId]);
+    setUserID(userId);
+    setRenderRestro(true);
+    
   };
 
   return (
-    <div>
+
+      <div>
+      
       {Object.keys(usernames).length === 0 && (
         <form onSubmit={handleSubmit}>
           <label>
@@ -88,8 +100,10 @@ const ShareLink = () => {
             <button type="submit">Submit Preferences</button>
           </form>
         </div>
+         
       ))}
-    </div>
+      {renderRestro && <Selection username={usernames[userID]} preferences={preferences[userID]}  />}
+</div>
   );
 };
 
