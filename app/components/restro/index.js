@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import RestroItem from '../restroItem';
 
 const Selection = ({preferences}) => {
   const [restaurants, setRestaurants] = useState([]);
@@ -56,8 +57,7 @@ const Selection = ({preferences}) => {
       <h2>Suggested Restaurants</h2>
       <ul>
         {restaurants.map((restaurant) => (
-          <li key={restaurant.place_id} onClick={()=> handleRestroClick(restaurant)}>{restaurant.name}</li>
-         
+          <RestroItem key={restaurant.place_id} name={restaurant.name} rating={restaurant.rating} type={restaurant.type} vicinity={restaurant.vicinity} photo={restaurant.photos[0].photo_reference}/>         
         ))}
       </ul>
       {selectedRestaurant && (
