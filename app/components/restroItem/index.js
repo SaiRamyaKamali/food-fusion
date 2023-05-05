@@ -45,9 +45,10 @@ const RestroItem = ({name,rating,type,vicinity,photo,mostRestro}) => {
     )
   }
   useEffect(() => {
-    if(mRestro.length > 0) {
-      const randomIndex = Math.floor(Math.random() * mRestro.length);
-      const mostLikedRestro = mRestro[randomIndex];
+    const filteredRestros = mRestro.filter(restro => restro.likes === 2);
+    if(filteredRestros.length > 0) {
+      const randomIndex = Math.floor(Math.random() * filteredRestros.length);
+      const mostLikedRestro = filteredRestros[randomIndex];
       mostRestro(mostLikedRestro);
     }
   }, [mRestro, mostRestro]);
