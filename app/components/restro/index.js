@@ -7,6 +7,24 @@ const Selection = ({preferences}) => {
   const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${preferences.cuisine}&key=${apiKey}`;
 
   useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(latitude)
+        const apiKey = "14e1e4ee5cdd40c28466ccf4e1947170";
+
+        fetch(
+          `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
+        )
+          .then(response => response.json())
+          .then(data => {
+            preferences.location1 = data.results[0].formatted;
+          })
+          .catch(error => console.error(error));
+          console.log(preferences.location1);
+      });
+    }
     async function getNearbyRestaurants(preferences) {
       console.log(preferences)
       try {
@@ -48,6 +66,7 @@ const Selection = ({preferences}) => {
           <p>{selectedRestaurant.rating}</p>
           <p>{selectedRestaurant.types[0]}</p>
           <p>{selectedRestaurant.vicinity}</p>
+          <p>{selectedRestaurant.website}</p>
           {/* <p>{selectedRestaurant.photos[0].html_attributions[0]}</p> */}
           <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${selectedRestaurant.photos[0].photo_reference}&key=${apiKey}`} alt={selectedRestaurant.name} />
         </div>
