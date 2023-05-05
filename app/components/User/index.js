@@ -9,6 +9,7 @@ const ShareLink = () => {
   const [preferences, setPreferences] = useState({});
   const [renderRestro, setRenderRestro] = useState(false);
   const [renderForm, setRenderForm] = useState(true);
+  const [loc, setLoc] = useState(false);
 
   
 
@@ -19,24 +20,25 @@ const ShareLink = () => {
       ...prevPreferences,
       [field]: value,
     }));
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        console.log(latitude)
-        const apiKey = "14e1e4ee5cdd40c28466ccf4e1947170";
+    
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(position => {
+    //     const latitude = position.coords.latitude;
+    //     const longitude = position.coords.longitude;
+    //     console.log(latitude)
+    //     const apiKey = "14e1e4ee5cdd40c28466ccf4e1947170";
 
-        fetch(
-          `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
-        )
-          .then(response => response.json())
-          .then(data => {
-            preferences.location1 = data.results[0].formatted;
-          })
-          .catch(error => console.error(error));
-          console.log(preferences.location1);
-      });
-    }
+    //     fetch(
+    //       `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
+    //     )
+    //       .then(response => response.json())
+    //       .then(data => {
+    //         preferences.location1 = data.results[0].formatted;
+    //       })
+    //       .catch(error => console.error(error));
+    //       console.log(preferences.location1);
+    //   });
+    // }
   };
   useEffect(()=>{
     if (navigator.geolocation) {
@@ -57,7 +59,7 @@ const ShareLink = () => {
           console.log(preferences.location1);
       });
     }
-  },[preferences])
+  },[loc])
   const handlePreferenceSubmit = (event) => {
     event.preventDefault();
     console.log('preferences submitted')
@@ -66,6 +68,9 @@ const ShareLink = () => {
     setRenderForm(false);
     
   };
+  const handleLocation = (event) =>{
+    setLoc(true);
+  }
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '100vh'}}>
@@ -173,6 +178,8 @@ const ShareLink = () => {
               value={preferences.location1 || ""}
               onChange={handlePreferenceChange}
             />
+            <br/>
+            <button onClick={handleLocation}>Get Location</button>
           </label>
         </div>
       }
