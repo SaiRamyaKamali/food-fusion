@@ -21,9 +21,9 @@ export async function POST(request) {
   // console.log(long);
   
 
-
+  const price = (preferences.price1<preferences.price2)? preferences.price1:preferences.price2;
   const apiKey = 'AIzaSyBDx0Jt2uc5577zBvhflHCmnAS-fe_y_3s';
-  const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=1500&type=restaurant&keyword=${preferences.cuisine1},${preferences.cuisine2}&key=${apiKey}`;
+  const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.lat},${location.lng}&radius=1500&type=restaurant&keyword=${preferences.cuisine1},${preferences.cuisine2}&maxprice=${price}&key=${apiKey}`;
   const response = await fetch(apiUrl);
   const data = await response.json();
   return NextResponse.json({ results: data.results })
