@@ -77,10 +77,10 @@ const Selection = ({preferences}) => {
       </ul></div>)}
       <button onClick={handleRestroClick}>Pick a Restuarent</button>
       {selectedRestaurant && (
-  <div>
+  <div className='Output'>
     Selected restaurant: {selectedRestaurant.name} <br/>
     Rating: {selectedRestaurant.rating} <br/>
-    Address:{selectedRestaurant.vicinity}
+    Address: {selectedRestaurant.vicinity}
   </div>
 )}
       

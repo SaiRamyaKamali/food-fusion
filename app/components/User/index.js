@@ -82,7 +82,12 @@ const ShareLink = () => {
               <label>
                 Cuisine
                 <br />
-                <select
+                <input type = "text"
+                  name = "cuisine1"
+                  onChange={handlePreferenceChange}>
+                  
+                </input>
+                {/* <select
                   name="cuisine1"
                   value={preferences.cuisine1 || ""}
                   onChange={handlePreferenceChange}
@@ -98,7 +103,7 @@ const ShareLink = () => {
                   <option value="mexican">Mexican</option>
                   <option value="thai">Thai</option>
                   <option value="thai">Arabian</option>
-                </select>
+                </select> */}
               </label>
               <br />
               <label>
@@ -126,7 +131,12 @@ const ShareLink = () => {
               <label>
                 Cuisine
                 <br />
-                <select
+                <input type = "text"
+                  name = "cuisine2"
+                  onChange={handlePreferenceChange}>
+                  
+                </input>
+                {/* <select
                   name="cuisine2"
                   value={preferences.cuisine2 || ""}
                   onChange={handlePreferenceChange}
@@ -142,7 +152,7 @@ const ShareLink = () => {
                   <option value="mexican">Mexican</option>
                   <option value="thai">Thai</option>
                   <option value="thai">Arabian</option>
-                </select>
+                </select> */}
               </label>
               <br />
               <label>

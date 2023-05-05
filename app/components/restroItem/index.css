@@ -26,6 +26,13 @@
   font-family: 'Roboto';
   font-size: 16px;
 }
+.Output{
+  color: #020b14;
+  font-family: 'Roboto';
+  font-size: 16px;
+  justify-content: center;
+  background-color: #0a86e6;
+}
 
 
 
