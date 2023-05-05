@@ -189,7 +189,7 @@ const ShareLink = () => {
               onChange={handlePreferenceChange}
             />
             <br/>
-            <button onClick={handleLocation}>Get Location</button>
+            <button onClick={handleLocation} className="preference-button">Get Location</button>
           </label>
         </div>
       }

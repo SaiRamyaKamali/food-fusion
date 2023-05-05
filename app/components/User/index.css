@@ -28,8 +28,19 @@ input[type="text"],
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 20px;
   }
 
   button[type="submit"]:hover {
     background-color: #fda143;
+  }
+  .preference-button{
+    background-color: #cb8805;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
   }

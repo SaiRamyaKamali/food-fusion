@@ -75,7 +75,7 @@ const Selection = ({preferences}) => {
         ))}
         
       </ul></div>)}
-      <button onClick={handleRestroClick}>Pick a Restuarent</button>
+      <button onClick={handleRestroClick} className="pickRestaurant">Pick a Restuarent</button>
       {selectedRestaurant && (
   <div className='Output'>
     Selected restaurant: {mostRest.name} <br/>
