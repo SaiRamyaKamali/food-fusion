@@ -78,6 +78,10 @@ const Selection = ({preferences}) => {
       {mostRest&&
       <div>
         {mostRest.name}
+        <br></br>
+        {mostRest.rating}
+        <br></br>
+        {mostRest.vicinity}
         </div>}
       
     </div>
