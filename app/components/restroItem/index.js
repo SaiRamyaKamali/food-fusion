@@ -11,7 +11,7 @@ const RestroItem = ({name,rating,type,vicinity,photo}) => {
   const apiKey = 'AIzaSyBDx0Jt2uc5577zBvhflHCmnAS-fe_y_3s';
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
-  const [mRestro, setMRestro] = useState({});
+  const [mRestro, setMRestro] = useState([]);
 
   const renderAnswer = () => {
     if (isActive) {
@@ -49,17 +49,18 @@ const RestroItem = ({name,rating,type,vicinity,photo}) => {
     if (likes < 2) {
       setLikes(likes + 1);
     }
-    if(mRestro['likes']>likes)
-    {
+    console.log(mRestro.length)
+    // if(mRestro['likes']<likes)
+    // {
         setMRestro({
-          // likes:likes,
+          likes:likes,
           name:name,
           rating:rating,
           type:type,
           vicinity:vicinity,
           photo:photo,
         });
-    }
+    // }
     console.log(mRestro);
   }
   const handleDislikeClick = () => {
