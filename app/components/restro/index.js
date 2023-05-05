@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import RestroItem from '../restroItem';
 import {TailSpin} from 'react-loader-spinner'
+import './index.css'
 
 const Selection = ({preferences}) => {
   const [restaurants, setRestaurants] = useState([]);
@@ -57,8 +58,8 @@ const Selection = ({preferences}) => {
 
   return (
     <div>
-      {isLoading? <TailSpin type="TailSpin" color="#00BFFF" height={50} width={50} /> :(<div><h2>Suggested Restaurants</h2>
-      <ul>
+      {isLoading? <TailSpin type="TailSpin" color="#00BFFF" height={50} width={50} /> :(<div className="faqs-container"><h2 className="heading">Suggested Restaurants</h2>
+      <ul className="faqs-list ">
         {restaurants.map((restaurant) => (
           <RestroItem key={restaurant.place_id} name={restaurant.name} rating={restaurant.rating} type={restaurant.type} vicinity={restaurant.vicinity} photo={restaurant.photos[0].photo_reference}/>         
         ))}
