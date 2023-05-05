@@ -68,14 +68,8 @@ const Selection = ({preferences}) => {
 
   return (
     <div>
+     
       {isLoading? <TailSpin type="TailSpin" color="#00BFFF" height={50} width={50} /> :(<div className="faqs-container"><h2 className="heading">Suggested Restaurants</h2>
-      <ul className="faqs-list ">
-        {restaurants.map((restaurant) => (
-          <RestroItem key={restaurant.place_id} name={restaurant.name} rating={restaurant.rating} type={restaurant.type} vicinity={restaurant.vicinity} photo={restaurant.photos[0].photo_reference} mostRestro={mostRestro}/>         
-        ))}
-        
-      </ul></div>)}
-      <button onClick={handleRestroClick} className="pickRestaurant">Pick a Restuarent</button>
       {selectedRestaurant && (
   <div className='Output'>
     Selected restaurant: {mostRest.name} <br/>
@@ -83,6 +77,14 @@ const Selection = ({preferences}) => {
     Address: {mostRest.vicinity}
   </div>
 )}
+      <ul className="faqs-list ">
+        {restaurants.map((restaurant) => (
+          <RestroItem key={restaurant.place_id} name={restaurant.name} rating={restaurant.rating} type={restaurant.type} vicinity={restaurant.vicinity} photo={restaurant.photos[0].photo_reference} mostRestro={mostRestro}/>         
+        ))}
+        
+      </ul></div>)}
+      <button onClick={handleRestroClick} className="pickRestaurant">Pick a Restuarent</button>
+      
     </div>
   );
 };
