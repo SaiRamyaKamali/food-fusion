@@ -82,7 +82,6 @@ const RestroItem = ({name,rating,type,vicinity,photo,mostRestro}) => {
       <div className="restro-container">
         <h1 className="restro">{name}</h1>
         <button onClick={handleLikeClick}>👍 {likes}</button>
-        <button onClick={handleDislikeClick}>👎 {dislikes}</button>
         {renderActiveImage()}
       </div>
       {renderAnswer()}
