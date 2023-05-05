@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import RestroItem from '../restroItem';
+import {TailSpin} from 'react-loader-spinner'
 
 const Selection = ({preferences}) => {
   const [restaurants, setRestaurants] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const apiKey = 'AIzaSyBDx0Jt2uc5577zBvhflHCmnAS-fe_y_3s';
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${preferences.cuisine}&key=${apiKey}`;
@@ -39,6 +41,7 @@ const Selection = ({preferences}) => {
         const data = await response.json();
         console.log(data)
         setRestaurants(data.results);
+        setIsLoading(false)
       } catch (error) {
         console.error(error);
       }
@@ -54,12 +57,12 @@ const Selection = ({preferences}) => {
 
   return (
     <div>
-      <h2>Suggested Restaurants</h2>
+      {isLoading? <TailSpin type="TailSpin" color="#00BFFF" height={50} width={50} /> :(<div><h2>Suggested Restaurants</h2>
       <ul>
         {restaurants.map((restaurant) => (
           <RestroItem key={restaurant.place_id} name={restaurant.name} rating={restaurant.rating} type={restaurant.type} vicinity={restaurant.vicinity} photo={restaurant.photos[0].photo_reference}/>         
         ))}
-      </ul>
+      </ul></div>)}
       {selectedRestaurant && (
         <div>
           <h3>{selectedRestaurant.name}</h3>
