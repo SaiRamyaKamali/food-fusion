@@ -49,7 +49,7 @@ const Selection = ({preferences}) => {
       }
     }
 
-    if (preferences.location1 && preferences.cuisine1 && preferences.price1 && preferences.location2 && preferences.cuisine2 && preferences.price2) {
+    if (preferences.location1 && preferences.cuisine1 && preferences.price1 && preferences.cuisine2 && preferences.price2) {
       getNearbyRestaurants(preferences);
     }
   }, [preferences]);

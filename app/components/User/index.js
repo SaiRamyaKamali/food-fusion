@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Selection from "../restro";
+import './index.css';
 
 const ShareLink = () => {
+  
+  
+
   const [preferences, setPreferences] = useState({});
   const [renderRestro, setRenderRestro] = useState(false);
   const [renderForm, setRenderForm] = useState(true);
@@ -64,88 +68,122 @@ const ShareLink = () => {
   };
 
   return (
-    <div>
-      { renderForm && <div>
-      <h2>Enter Your Preferences for User 1</h2>
-      <form onSubmit={handlePreferenceSubmit}>
-        <label>
-          Cuisine
-          <br />
-          <input
-            type="text"
-            name="cuisine1"
-            value={preferences.cuisine1 || ""}
-            onChange={handlePreferenceChange}
-            required
-          />
-        </label>
-        <br/>
-        <label>
-          Location
-          <br />
-          <input
-            type="text"
-            name="location1"
-            value={preferences.location1 || ""}
-            onChange={handlePreferenceChange}
-            required
-          />
-        </label>
-        <br/>
-        <label>
-          Price
-          <br />
-          <input
-            type="text"
-            name="price1"
-            value={preferences.price1 || ""}
-            onChange={handlePreferenceChange}
-            required
-          />
-        </label>
-        <br/>
-        <h2>Enter Your Preferences for User 2</h2>
-        <label>
-          Cuisine
-          <br />
-          <input
-            type="text"
-            name="cuisine2"
-            value={preferences.cuisine2 || ""}
-            onChange={handlePreferenceChange}
-            required
-          />
-        </label>
-        <br/>
-        <label>
-          Location
-          <br />
-          <input
-            type="text"
-            name="location2"
-            value={preferences.location2 || ""}
-            onChange={handlePreferenceChange}
-            required
-          />
-        </label>
-        <br/>
-        <label>
-          Price
-          <br />
-          <input
-            type="text"
-            name="price2"
-            value={preferences.price2 || ""}
-            onChange={handlePreferenceChange}
-            required
-          />
-        </label>
-        <br/>
-        <button type="submit">Submit Preferences</button>
-      </form>
-      </div>}
-      
-      {renderRestro && <Selection preferences={preferences}/>}
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '100vh'}}>
+      {renderForm &&
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="form">
+            <h2 style={{marginBottom:'20px'}}>Enter Your Preferences</h2>
+            <form onSubmit={handlePreferenceSubmit}>
+              <label>
+                Cuisine
+                <br />
+                <select
+                  name="cuisine1"
+                  value={preferences.cuisine1 || ""}
+                  onChange={handlePreferenceChange}
+                  required
+                >
+                  <option value="american">American</option>
+                  <option value="chinese">Chinese</option>
+                  <option value="french">French</option>
+                  <option value="indian">Indian</option>
+                  <option value="italian">Italian</option>
+                  <option value="japanese">Japanese</option>
+                  <option value="korean">Korean</option>
+                  <option value="mexican">Mexican</option>
+                  <option value="thai">Thai</option>
+                  <option value="thai">Arabian</option>
+                </select>
+              </label>
+              <br />
+              <label>
+                Price
+                <br />
+                <select
+                  name="price1"
+                  value={preferences.price1 || ""}
+                  onChange={handlePreferenceChange}
+                  required
+                >
+                  <option value="">Select a price range</option>
+                  <option value="1">Low</option>
+                  <option value="2">Medium</option>
+                  <option value="3">High</option>
+                  <option value="4">Expensive</option>
+                </select>
+              </label>
+              <br />
+            </form>
+          </div>
+          <div className="form">
+            <h2 style={{marginBottom:'20px'}}>Enter Your Partner's Preferences</h2>
+            <form onSubmit={handlePreferenceSubmit}>
+              <label>
+                Cuisine
+                <br />
+                <select
+                  name="cuisine2"
+                  value={preferences.cuisine2 || ""}
+                  onChange={handlePreferenceChange}
+                  required
+                >
+                  <option value="american">American</option>
+                  <option value="chinese">Chinese</option>
+                  <option value="french">French</option>
+                  <option value="indian">Indian</option>
+                  <option value="italian">Italian</option>
+                  <option value="japanese">Japanese</option>
+                  <option value="korean">Korean</option>
+                  <option value="mexican">Mexican</option>
+                  <option value="thai">Thai</option>
+                  <option value="thai">Arabian</option>
+                </select>
+              </label>
+              <br />
+              <label>
+                Price
+                <br />
+                <select
+                  name="price2"
+                  value={preferences.price2 || ""}
+                  onChange={handlePreferenceChange}
+                  required
+                >
+                  <option value="">Select a price range</option>
+                  <option value="1">Low</option>
+                  <option value="2">Medium</option>
+                  <option value="3">High</option>
+                  <option value="4">Expensive</option>
+                </select>
+              </label>
+              <br />
+            </form>
+          </div>
+        </div>
+      }
+
+      {renderForm &&
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '1000px' ,backgroundColor:'white' }}>
+          <label>
+            Location
+            <br />
+            <input
+              type="text"
+              name="location"
+              value={preferences.location1 || ""}
+              onChange={handlePreferenceChange}
+            />
+          </label>
+        </div>
+      }
+
+      {renderForm &&
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <button type="submit" onClick={handlePreferenceSubmit}>Submit Preferences</button>
+        </div>
+      }
+
+      {renderRestro && <Selection preferences={preferences} />}
     </div>
   );
 };
