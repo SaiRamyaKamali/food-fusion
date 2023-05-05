@@ -190,7 +190,7 @@ const ShareLink = () => {
         </div>
       }
 
-      {renderRestro && <Selection preferences={preferences} />}
+        {renderRestro && <Selection preferences={preferences} />}
     </div>
   );
 };

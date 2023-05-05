@@ -44,11 +44,14 @@ const RestroItem = ({name,rating,type,vicinity,photo,mostRestro}) => {
       </button>
     )
   }
-  useEffect(()=>{
-    const sortedRestros = mRestro.sort((a, b) => b.likes - a.likes);
-    if(sortedRestros.length!=0)
-    mostRestro(sortedRestros[0]);
-},[mRestro]);
+  useEffect(() => {
+    if(mRestro.length > 0) {
+      const randomIndex = Math.floor(Math.random() * mRestro.length);
+      const mostLikedRestro = mRestro[randomIndex];
+      mostRestro(mostLikedRestro);
+    }
+  }, [mRestro, mostRestro]);
+  
   const handleLikeClick = () => {
     if (likes < 2) {
       setLikes(likes + 1);

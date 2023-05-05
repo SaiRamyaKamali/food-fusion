@@ -54,8 +54,9 @@ const Selection = ({preferences}) => {
     }
   }, [preferences]);
   const handleRestroClick = () => {
-      console.log(mostRest);
+    setSelectedRestaurant(mostRest);
   };
+  
   function mostRestro(restro) {
     console.log(
       "hhh"
@@ -75,14 +76,11 @@ const Selection = ({preferences}) => {
         
       </ul></div>)}
       <button onClick={handleRestroClick}>Pick a Restuarent</button>
-      {mostRest&&
-      <div>
-        {mostRest.name}
-        <br></br>
-        {mostRest.rating}
-        <br></br>
-        {mostRest.vicinity}
-        </div>}
+      {selectedRestaurant && (
+  <div>
+    Selected restaurant: {selectedRestaurant.name}
+  </div>
+)}
       
     </div>
   );
