@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './index.css'
 
 const PLUS_IMAGE =
@@ -6,7 +6,7 @@ const PLUS_IMAGE =
 const MINUS_IMAGE =
   'https://assets.ccbp.in/frontend/react-js/faqs-minus-icon-img.png'
 
-const RestroItem = ({name,rating,type,vicinity,photo}) => {
+const RestroItem = ({name,rating,type,vicinity,photo,mostRestro}) => {
   const [isActive, setIsActive] = useState(false)
   const apiKey = 'AIzaSyBDx0Jt2uc5577zBvhflHCmnAS-fe_y_3s';
   const [likes, setLikes] = useState(0);
@@ -44,6 +44,10 @@ const RestroItem = ({name,rating,type,vicinity,photo}) => {
       </button>
     )
   }
+  useEffect(()=>{
+    const sortedRestros = mRestro.sort((a, b) => b.likes - a.likes);
+    mostRestro(sortedRestros[0]);
+},[mRestro]);
   const handleLikeClick = () => {
     if (likes < 2) {
       setLikes(likes + 1);

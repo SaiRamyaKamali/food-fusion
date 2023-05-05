@@ -8,6 +8,7 @@ const Selection = ({preferences}) => {
   const [isLoading, setIsLoading] = useState(true);
   const apiKey = 'AIzaSyBDx0Jt2uc5577zBvhflHCmnAS-fe_y_3s';
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [mostRest, setMostRest] = useState({});
   const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${preferences.cuisine}&key=${apiKey}`;
 
   useEffect(() => {
@@ -52,20 +53,24 @@ const Selection = ({preferences}) => {
       getNearbyRestaurants(preferences);
     }
   }, [preferences]);
-  const handleRestroClick = (restaurant) => {
-    setSelectedRestaurant(restaurant);
+  const handleRestroClick = () => {
+      console.log(mostRest);
   };
+  function mostRestro(restro) {
+    setMostRest(restro);
+  }
 
   return (
     <div>
       {isLoading? <TailSpin type="TailSpin" color="#00BFFF" height={50} width={50} /> :(<div className="faqs-container"><h2 className="heading">Suggested Restaurants</h2>
       <ul className="faqs-list ">
         {restaurants.map((restaurant) => (
-          <RestroItem key={restaurant.place_id} name={restaurant.name} rating={restaurant.rating} type={restaurant.type} vicinity={restaurant.vicinity} photo={restaurant.photos[0].photo_reference}/>         
+          <RestroItem key={restaurant.place_id} name={restaurant.name} rating={restaurant.rating} type={restaurant.type} vicinity={restaurant.vicinity} photo={restaurant.photos[0].photo_reference} mostRestro={mostRestro}/>         
         ))}
         
       </ul></div>)}
-      <button>Pick a Restuarent</button>
+      <button onClick={handleRestroClick}>Pick a Restuarent</button>
+      
     </div>
   );
 };
