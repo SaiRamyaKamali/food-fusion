@@ -81,8 +81,10 @@ const RestroItem = ({name,rating,type,vicinity,photo,mostRestro}) => {
     <li className="restro-item">
       <div className="restro-container">
         <h1 className="restro">{name}</h1>
-        <button onClick={handleLikeClick}>👍 {likes}</button>
+        <div className="end">
         {renderActiveImage()}
+        <button onClick={handleLikeClick} className="like-button">👍 {likes}</button>
+        </div>
       </div>
       {renderAnswer()}
     </li>
