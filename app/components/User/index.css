@@ -1,0 +1,35 @@
+.form{
+    width: 500px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #cb8805;
+    border-radius: 5px;
+    padding: 20px;
+}
+label {
+    text-align: center;
+}
+
+input[type="text"],
+  select {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #cb8805;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  button[type="submit"] {
+    background-color: #cb8805;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #fda143;
+  }
