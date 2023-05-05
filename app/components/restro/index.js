@@ -83,7 +83,6 @@ const Selection = ({preferences}) => {
     Address: {mostRest.vicinity}
   </div>
 )}
-      
     </div>
   );
 };
