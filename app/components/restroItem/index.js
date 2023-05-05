@@ -9,6 +9,8 @@ const MINUS_IMAGE =
 const RestroItem = ({name,rating,type,vicinity,photo}) => {
   const [isActive, setIsActive] = useState(false)
   const apiKey = 'AIzaSyBDx0Jt2uc5577zBvhflHCmnAS-fe_y_3s';
+  const [likes, setLikes] = useState(0);
+  const [dislikes, setDislikes] = useState(0);
 
   const renderAnswer = () => {
     if (isActive) {
@@ -46,6 +48,8 @@ const RestroItem = ({name,rating,type,vicinity,photo}) => {
     <li className="restro-item">
       <div className="restro-container">
         <h1 className="restro">{name}</h1>
+        <button onClick={() => setLikes(likes + 1)}>👍 {likes}</button>
+        <button onClick={() => setDislikes(dislikes + 1)}>👎 {dislikes}</button>
         {renderActiveImage()}
       </div>
       {renderAnswer()}

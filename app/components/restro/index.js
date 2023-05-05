@@ -9,6 +9,8 @@ const Selection = ({preferences}) => {
   const apiKey = 'AIzaSyBDx0Jt2uc5577zBvhflHCmnAS-fe_y_3s';
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${preferences.cuisine}&key=${apiKey}`;
+  const [likes, setLikes] = useState(0);
+  const [dislikes, setDislikes] = useState(0);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -63,6 +65,7 @@ const Selection = ({preferences}) => {
         {restaurants.map((restaurant) => (
           <RestroItem key={restaurant.place_id} name={restaurant.name} rating={restaurant.rating} type={restaurant.type} vicinity={restaurant.vicinity} photo={restaurant.photos[0].photo_reference}/>         
         ))}
+        
       </ul></div>)}
       {selectedRestaurant && (
         <div>

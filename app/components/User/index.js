@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Selection from "../restro";
 
 const ShareLink = () => {
@@ -15,8 +15,45 @@ const ShareLink = () => {
       ...prevPreferences,
       [field]: value,
     }));
-  };
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(latitude)
+        const apiKey = "14e1e4ee5cdd40c28466ccf4e1947170";
 
+        fetch(
+          `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
+        )
+          .then(response => response.json())
+          .then(data => {
+            preferences.location1 = data.results[0].formatted;
+          })
+          .catch(error => console.error(error));
+          console.log(preferences.location1);
+      });
+    }
+  };
+  useEffect(()=>{
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(latitude)
+        const apiKey = "14e1e4ee5cdd40c28466ccf4e1947170";
+
+        fetch(
+          `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
+        )
+          .then(response => response.json())
+          .then(data => {
+            preferences.location1 = data.results[0].formatted;
+          })
+          .catch(error => console.error(error));
+          console.log(preferences.location1);
+      });
+    }
+  },[preferences])
   const handlePreferenceSubmit = (event) => {
     event.preventDefault();
     console.log('preferences submitted')
