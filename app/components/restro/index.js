@@ -65,17 +65,7 @@ const Selection = ({preferences}) => {
         ))}
         
       </ul></div>)}
-      {selectedRestaurant && (
-        <div>
-          <h3>{selectedRestaurant.name}</h3>
-          <p>{selectedRestaurant.rating}</p>
-          <p>{selectedRestaurant.types[0]}</p>
-          <p>{selectedRestaurant.vicinity}</p>
-          <p>{selectedRestaurant.website}</p>
-          {/* <p>{selectedRestaurant.photos[0].html_attributions[0]}</p> */}
-          <img src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${selectedRestaurant.photos[0].photo_reference}&key=${apiKey}`} alt={selectedRestaurant.name} />
-        </div>
-      )}
+      <button>Pick a Restuarent</button>
     </div>
   );
 };
