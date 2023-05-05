@@ -8,7 +8,7 @@ const Selection = ({preferences}) => {
   const [isLoading, setIsLoading] = useState(true);
   const apiKey = 'AIzaSyBDx0Jt2uc5577zBvhflHCmnAS-fe_y_3s';
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  const [mostRest, setMostRest] = useState({});
+  const [mostRest, setMostRest] = useState({likes:0});
   const apiUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${preferences.cuisine}&key=${apiKey}`;
 
   useEffect(() => {
@@ -57,8 +57,13 @@ const Selection = ({preferences}) => {
       console.log(mostRest);
   };
   function mostRestro(restro) {
+    console.log(
+      "hhh"
+    );
+    console.log(restro);
+    if(restro.likes>=mostRest.likes)
     setMostRest(restro);
-  }
+}
 
   return (
     <div>
@@ -70,6 +75,10 @@ const Selection = ({preferences}) => {
         
       </ul></div>)}
       <button onClick={handleRestroClick}>Pick a Restuarent</button>
+      {mostRest&&
+      <div>
+        {mostRest.name}
+        </div>}
       
     </div>
   );

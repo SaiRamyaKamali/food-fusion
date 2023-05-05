@@ -46,6 +46,7 @@ const RestroItem = ({name,rating,type,vicinity,photo,mostRestro}) => {
   }
   useEffect(()=>{
     const sortedRestros = mRestro.sort((a, b) => b.likes - a.likes);
+    if(sortedRestros.length!=0)
     mostRestro(sortedRestros[0]);
 },[mRestro]);
   const handleLikeClick = () => {
