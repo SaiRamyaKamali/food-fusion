@@ -43,13 +43,24 @@ const RestroItem = ({name,rating,type,vicinity,photo}) => {
       </button>
     )
   }
+  const handleLikeClick = () => {
+    if (likes < 2) {
+      setLikes(likes + 1);
+    }
+  }
+  const handleDislikeClick = () => {
+    if(dislikes<2)
+    {
+    setDislikes(dislikes + 1);
+    }
+  }
 
   return (
     <li className="restro-item">
       <div className="restro-container">
         <h1 className="restro">{name}</h1>
-        <button onClick={() => setLikes(likes + 1)}>👍 {likes}</button>
-        <button onClick={() => setDislikes(dislikes + 1)}>👎 {dislikes}</button>
+        <button onClick={handleLikeClick}>👍 {likes}</button>
+        <button onClick={handleDislikeClick}>👎 {dislikes}</button>
         {renderActiveImage()}
       </div>
       {renderAnswer()}
